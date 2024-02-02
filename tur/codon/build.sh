@@ -4,6 +4,7 @@ TERMUX_PKG_LICENSE="non-free"
 TERMUX_PKG_LICENSE_FILE="LICENSE"
 TERMUX_PKG_MAINTAINER="@termux"
 TERMUX_PKG_VERSION=0.16.3
+TERMUX_PKG_REVISION=1
 TERMUX_PKG_SRCURL=https://github.com/exaloop/codon/archive/refs/tags/v$TERMUX_PKG_VERSION.tar.gz
 TERMUX_PKG_SHA256=f28b9d8fd5349257aab47154703e9bc744a4884d5975c55776f4b0a72302eb31
 TERMUX_PKG_DEPENDS="libc++, libxml2, zlib, zstd"
@@ -46,4 +47,7 @@ exec env PATH="$TERMUX_PREFIX/opt/codon/bin:\$PATH" $TERMUX_PREFIX/opt/codon/bin
 
 EOF
 	chmod +x $TERMUX_PREFIX/bin/codon
+	mkdir -p $TERMUX_PREFIX/opt/codon/lib/cmake/fmt $TERMUX_PREFIX/opt/codon/lib/pkgconfig
+	mv $TERMUX_PREFIX/lib/cmake/fmt $TERMUX_PREFIX/opt/codon/lib/cmake/fmt
+	mv $TERMUX_PREFIX/lib/pkgconfig/fmt.pc $TERMUX_PREFIX/opt/codon/lib/pkgconfig/fmt.pc
 }
